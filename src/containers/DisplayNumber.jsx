@@ -1,7 +1,22 @@
-import React, { Component } from 'react';
 import DisplayNumber from '../component/DisplayNumber';
-import store from '../store';
+import { connect } from 'react-redux';
 
+
+function mapReduxStateToReactProps(state) {
+  return ({
+    number: state.number
+  })
+}
+
+
+export default connect(mapReduxStateToReactProps)(DisplayNumber);
+
+
+
+
+/*
+// import React, { Component } from 'react';
+// import store from '../store';
 export default class extends Component {
   state = { number: store.getState().number }
   constructor(props) {
@@ -12,7 +27,8 @@ export default class extends Component {
   }
   render() {
     return (
-      <DisplayNumber number={this.state.number} />
+      <DisplayNumber number={this.state.number} unit={this.props.unit}/>
     )
   }
 }
+*/
